@@ -1,0 +1,24 @@
+{
+  "requests": [
+    {
+      "id": 1294801,
+      "title": "cancer detection data",
+      "description": "patient data with labels being categories of risk for cancer"
+    },
+    {
+      "id": 190329,
+      "title": "smartkeyboard usage",
+      "description": "smartphone keyboard users typing patterns to develop trie tree for better suggestions"
+    },
+    {
+      "id": 23,
+      "title": "fraud occurrences in financial records",
+      "description": "idk enough about this"
+    },
+    {
+      "id": 9830324, 
+      "title": "recommendations for ecommerce platform",
+      "description": "recommender systems, i also don't know enough about this"
+    }
+  ]
+}
