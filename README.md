@@ -71,13 +71,28 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 # Project Spec
-Basically the front end just needs to be an interface so a client can join a network (maybe a join button), and to be a client and join network, they need to fill in 4 fields: w3 (the blockchain network endpoint, as a string), chain_id (integer), blockchain address (string), and private key (for blockchain address, also a string)
-At the moment there's no verification to check if strings they input are valid. Also for private key, how I'm doing it is via an environment variable, do you think it's secure to input it as a string into the server?
+## User based web application
+## Flower Client
+1. Select from the taskboard which model they'll train.
+2. Fill in the form with 4 fields:
+* blockchain network endpoint (string)
+* chain id (integer)
+* blockchain address (string)
+* private key (string)
+3. Press the join button.
+4. Given the current global model at that point in time.
+# Flower User
 
-A better option I think is if there's metamask integration (can do with js I'm fairly certain, saw it in a tutorial vid I was watching)
-Actually before they join network, they'll select the model they are training (from a dropdown list). Then theywill join to be a client
-They'll then be given the current global model at that point in time, to train (how is yet to be determined), and then they'll train using their local data, and updates are sent time-based, or number of rounds of training, to the blockchain via smartcontract (not front end). But I need to design the interface so that I can train the data locally, and it will automatically send to the network
-How I'm doing that I don't know, because they'll interface with the front end, but also a part of it is done locally. Any ideas? I will look into it more as well
+## Backlog
+### FLower Client
+* Verification of flower client party's input into form is valid.
 
-And then the front end will give them progress notifications, like 'update sent', 'rounds completed', 'current global round', 'total incentives earned,  (they get payment via the blockchain (ethereum) based on how much they train the model ), incentive earned (they get this incentive every time they send an update),
-People can also choose to upload their own model (and they will have to set up the blockchain network etc) so that people can choose it from the dropdown list to train.
+* Private key input security. Hash. OR 
+* Metamask integration
+
+* Training is automated
+* Sending hypothesis function to FML is automated
+
+* Updates sent to the flower client (time-based or rounds-based) via blockchain
+
+* Progress notifications:'update sent', 'rounds completed', 'current global round', 'total incentives earned' 
