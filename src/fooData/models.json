@@ -3,22 +3,76 @@
     {
       "id": 1294801,
       "title": "cancer detection data",
-      "description": "patient data with labels being categories of risk for cancer"
+      "description": "patient data with labels being categories of risk for cancer",
+      "format": "csv",
+      "incentiveAmount": 33,
+      "rounds": 4,
+      "modelType": "linear regression"
     },
     {
       "id": 190329,
       "title": "smartkeyboard usage",
-      "description": "smartphone keyboard users typing patterns to develop trie tree for better suggestions"
+      "description": "smartphone keyboard users typing patterns to develop trie tree for better suggestions",
+      "format": "csv",
+      "incentiveAmount": 12,
+      "rounds": 2,
+      "modelType": "neural network"
     },
     {
       "id": 23,
       "title": "fraud occurrences in financial records",
-      "description": "idk enough about this"
+      "description": "idk enough about this",
+      "format": "csv",
+      "incentiveAmount": 16,
+      "rounds": 1,
+      "modelType": "support vector machine"
     },
     {
       "id": 9830324, 
       "title": "recommendations for ecommerce platform",
-      "description": "recommender systems, i also don't know enough about this"
+      "description": "recommender systems, i also don't know enough about this",
+      "format": "csv",
+      "incentiveAmount": 3,
+      "rounds": 15,
+      "modelType": "logistic regression"
     }
-  ]
+  ],
+  "joiningInfo" : [
+    {
+      "id": 1294801,
+      "server": {
+        "description": "nothing here at the moment"
+      },
+      "blockchain": {
+        "description": "nothing here at the moment"
+      }
+    },
+    {
+      "id": 190329,
+      "server": {
+        "description": "nothing here at the moment"
+      },
+      "blockchain": {
+        "description": "nothing here at the moment"
+      }
+    },
+    {
+      "id": 23,
+      "server": {
+        "description": "nothing here at the moment"
+      },
+      "blockchain": {
+        "description": "nothing here at the moment"
+      }
+    },
+    {
+      "id": 9830324,
+      "server": {
+        "description": "nothing here at the moment"
+      },
+      "blockchain": {
+        "description": "nothing here at the moment"
+      }
+    }
+  ],
 }

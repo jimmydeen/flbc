@@ -1,4 +1,4 @@
-import { React } from "react"
+import { React } from "react";
 import { Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -11,24 +11,40 @@ const Client = () => {
     const data = {
         requests: [
             {
-            id: 1294801,
-            title: "cancer detection data",
-            description: "patient data with labels being categories of risk for cancer"
+                id: 1294801,
+                title: "cancer detection data",
+                description: "patient data with labels being categories of risk for cancer",
+                format: "csv",
+                incentiveAmount: 33,
+                rounds: 4,
+                modelType: "linear regression",
             },
             {
-            id: 190329,
-            title: "smartkeyboard usage",
-            description: "smartphone keyboard users typing patterns to develop trie tree for better suggestions"
+                id: 190329,
+                title: "smartkeyboard usage",
+                description: "smartphone keyboard users typing patterns to develop trie tree for better suggestions",
+                format: "csv",
+                incentiveAmount: 12,
+                rounds: 2,
+                modelType: "neural network",
             },
             {
-            id: 23,
-            title: "fraud occurrences in financial records",
-            description: "idk enough about this"
+                id: 23,
+                title: "fraud occurrences in financial records",
+                description: "idk enough about this",
+                format: "csv",
+                incentiveAmount: 16,
+                rounds: 1,
+                modelType: "support vector machine",
             },
             {
-            id: 9830324, 
-            title: "recommendations for ecommerce platform",
-            description: "recommender systems, i also don't know enough about this"
+                id: 9830324, 
+                title: "recommendations for ecommerce platform",
+                description: "recommender systems, i also don't know enough about this",
+                format: "csv",
+                incentiveAmount: 3,
+                rounds: 15,
+                modelType: "logistic regression",
             }
         ]
     }
@@ -37,12 +53,17 @@ const Client = () => {
         <div style={{
             margin: '1em'
         }}>
-            <Typography variant="h6">Select a model to train:</Typography>
+            <Typography variant="h4">Select a model to train:</Typography>
             {data.requests.map((r) => {
                 return (
-                    <div style={{ margin: '0.5em'}}>
-                        <Button variant="outlined" sx={{ display: 'inline', mr: 1}}><Link to="/form" style={{ textDecoration: 'none'}}>Select</Link></Button>
-                        <Typography sx={{display: 'inline'}}>{r.id}, {r.title}, {r.description}</Typography>
+                    <div style={{ border: "1px solid", marginTop: '0.5em', padding: "0.5rem" }} key={r.id} variant="outlined">
+                        <Typography variant="h6" component="div">{r.title}</Typography>
+                        <Typography variant="body1">Description: {r.description}</Typography>
+                        <Typography variant="body1">Format: {r.format}</Typography>
+                        <Typography variant="body1">Incentive: {r.incentiveAmount}</Typography>
+                        <Typography variant="body1">Rounds: {r.rounds}</Typography>
+                        <Typography variant="body1">Model Type: {r.modelType}</Typography>
+                        <Link to="/agreement" state={{ id: r.id, title: r.title, description: r.description, format: r.format, incentive: r.incentiveAmount, rounds: r.rounds, model: r.modelType }} style={{ textDecoration: 'none'}}> Join</Link>
                     </div>
                 )
             })}
