@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Typography } from "@mui/material";
+import { Button, Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 
 const portForBackend = 5000
@@ -7,6 +7,8 @@ const Status = ({ needPopup }) => {
   const { id } = useParams();
   console.log(id);
   const [status, setStatus] = useState(null);
+
+  const [isPoppedUp, setIsPoppedUp] = useState(true);
 
   useEffect(() => {
     const getStatus = async () => {
@@ -27,7 +29,7 @@ const Status = ({ needPopup }) => {
         if (joinItem.id == id) {
           console.log("found join item");
           console.log(joinItem);
-          setStatus(prev => {prev.joinDetails = joinItem.title; return prev});
+          setStatus(prev => {prev.joinDetails = joinItem; return prev});
           break;
         }
       }
@@ -35,17 +37,39 @@ const Status = ({ needPopup }) => {
     getStatus();
   }, [])
 
+  const handleConnect = () => {
+    setIsPoppedUp(true);
+    return;
+  }
+
+  const handlePopupClose = () => {
+    setIsPoppedUp(false);
+  }
+
   return (
     <>
       {status &&
-        <div style={{ marginLeft: "1rem", marginTop: "1rem" }}>
-          <Typography variant="h6">{status.title}</Typography>
-          <Typography variant="body1">Description: {status.description}</Typography>
-          <Typography variant="body1">Format: {status.format}</Typography>
-          <Typography variant="body1">Incentive: {status.incentiveAmount}</Typography>
-          <Typography variant="body1">Rounds: {status.rounds}</Typography>
-          <Typography variant="body1">Model Type: {status.modelType}</Typography>
-        </div>
+        <>
+          <div style={{ marginLeft: "1rem", marginTop: "1rem" }}>
+            <Typography variant="h6">{status.title}</Typography>
+            <Typography variant="body1">Current Round: {status.rounds}</Typography>
+            <Typography variant="body1">Participants: {status.participants}</Typography>
+            <Button variant="outlined" onClick={handleConnect}>Connect</Button>
+          </div>
+          <Dialog
+            open={isPoppedUp}
+            onClose={handlePopupClose}
+          >
+            <DialogContent>
+              <Typography variant="h6">Server Info</Typography>
+              <Typography variant="body1">{status.joinDetails.server.description}</Typography>
+
+              <Typography variant="h6">Blockchain Info</Typography>
+              <Typography variant="body1">{status.joinDetails.blockchain.description}</Typography>
+              <Button variant="outlined">Download Client</Button>
+            </DialogContent>
+          </Dialog>
+        </>
       }
     </>
   )
