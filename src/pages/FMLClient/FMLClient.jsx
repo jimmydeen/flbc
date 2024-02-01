@@ -38,7 +38,7 @@ const FMLClient = () => {
 
   return (
     <>
-      <Typography variant="h6" sx={{ mt: 1, ml: 1, p: 3/4}}>Submit a request:</Typography>
+      <Typography variant="h4" sx={{ mt: 1, ml: 1, p: 3/4}}>Submit a request:</Typography>
       <Box component='form' className='JoinForm' sx={{
       width: 3/4,
       padding: '10px',

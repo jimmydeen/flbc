@@ -4,11 +4,11 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import DataProvider from './pages/DataProvider/DataProvider';
 import FMLClient from './pages/FMLClient/FMLClient';
 import Form from './pages/Form';
-import GetClientProgram from './pages/GetClientProgram';
-import JobAgreement from './pages/DataProvider/JobAgreement';
+import GetClientProgram from './pages/DataProvider/GetClientProgram';
+import RequestAgreement from './pages/DataProvider/RequestAgreement';
 import Deploy from './pages/FMLClient/Deploy';
 import NavBar from './components/NavBar';
-import Status from './pages/FMLClient/Status';
+import ManageRequest from './pages/FMLClient/ManageRequest';
 import Waiting from './pages/DataProvider/Waiting';
 
 function App() {
@@ -39,14 +39,14 @@ function App() {
 
             {/* Data Provider */}
             <Route path="/viewRequests" element={<DataProvider/>}></Route>
-            <Route path="/agreement" element={<JobAgreement/>}></Route>
+            <Route path="/agreement" element={<RequestAgreement/>}></Route>
             <Route path="/waiting" element={<Waiting/>}></Route>
             <Route path="/getClientProgram" element={<GetClientProgram/>}/>
             <Route path="/form" element={<Form/>}></Route>
 
             
             {/* Unified */}
-            <Route path="/job/:id" element={<Status/>}></Route>
+            <Route path="/job/:id" element={<ManageRequest/>}></Route>
           </Routes>
         </div>
       </ThemeProvider>

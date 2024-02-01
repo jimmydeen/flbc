@@ -3,7 +3,7 @@ import { Button, Dialog, DialogContent, DialogTitle, Typography } from "@mui/mat
 import { useParams } from "react-router-dom";
 
 const portForBackend = 5000
-const Status = ({ needPopup }) => {
+const ManageRequest = ({ needPopup }) => {
   const { id } = useParams();
   console.log(id);
   const [status, setStatus] = useState(null);
@@ -61,7 +61,7 @@ const Status = ({ needPopup }) => {
             onClose={handlePopupClose}
           >
             <DialogContent>
-              <Typography variant="h6">Server Info</Typography>
+              <DialogTitle>Server Info</DialogTitle>
               <Typography variant="body1">{status.joinDetails.server.description}</Typography>
 
               <Typography variant="h6">Blockchain Info</Typography>
@@ -75,4 +75,4 @@ const Status = ({ needPopup }) => {
   )
 }
 
-export default Status;
+export default ManageRequest;

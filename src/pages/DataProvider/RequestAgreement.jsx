@@ -3,7 +3,7 @@ import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, B
 import { useLocation, useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material";
 
-const JobAgreement = () => {
+const RequestAgreement = () => {
 
   // get the data from the previous page (page of requests) // may need to change this later
   const location = useLocation();
@@ -67,4 +67,4 @@ const JobAgreement = () => {
     </>
   )
 }
-export default JobAgreement;
+export default RequestAgreement;
