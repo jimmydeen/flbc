@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button, FormControl, FormHelperText, Box, Typography, TextField} from "@mui/material";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Deploy = () => {
-  const [contractPath, setContractPath] = useState();
   const [w3provider, setW3Provider] = useState();
   const [chainId, setChainId] = useState();
   const [senderAddress, setSenderAddress] = useState();
@@ -34,37 +33,41 @@ const Deploy = () => {
 
   const agree = () => {
     setTosPoppedUp(false);
-    // fetch("http://127.0.0.1:5000/deploy_contract", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //     body: JSON.stringify({
-    //       contract_path: contractPath,
-    //       w3provider,
-    //       chain_id: chainId,
-    //       sender_address: senderAddress,
-    //       private_key: privateKey,
-    //       incentive,
-    //       numberUpdatesRequested,
-    //       maxDataPoints,
-    //       stake
-    //     })
-    // })
-    // .then(res => res.json())
-    // .then(data => data.ok)
-    // .catch(err => alert("an error occurred whilst trying to deploy"))
+    // get contract address and contract abi as a result
+    fetch("http://127.0.0.1:5000/deploy_contract", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+        body: JSON.stringify({
+          w3provider,
+          chain_id: chainId,
+          sender_address: senderAddress,
+          private_key: privateKey,
+          incentive,
+          numberUpdatesRequested,
+          maxDataPoints,
+          stake
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+      const contractAddress = data.contract_address;
+      const contractAbi = data.contract_abi;
+
+    })
+    .catch(err => alert(err.message))
     navigate("/job/1294801");
   }
 
   useEffect(() => {
-    if (!contractPath || !w3provider || !senderAddress || !incentive || !numberUpdatesRequested || !stake || !privateKey || !maxDataPoints) {
+    if (!w3provider || !senderAddress || !incentive || !numberUpdatesRequested || !stake || !privateKey || !maxDataPoints) {
       console.log('not filled yet');
       setValidInput(false);
     } else {
       setValidInput(true);
     }
-  }, [contractPath, w3provider, chainId, senderAddress, incentive, numberUpdatesRequested, stake, privateKey, maxDataPoints])
+  }, [w3provider, chainId, senderAddress, incentive, numberUpdatesRequested, stake, privateKey, maxDataPoints])
 
   return (
     <>
@@ -76,7 +79,6 @@ const Deploy = () => {
       '& button': { m: 1, display: 'block', marginLeft: 'auto', marginRight: 'auto' },
       }}>
       <FormControl>
-          <TextField id="outlined-basic" required label="Contract Path" variant="outlined" onChange={(e) => setContractPath(e.target.value)}/>
           <TextField id="outlined-basic" required label="W3 Provider" variant="outlined" onChange={(e) => setW3Provider(e.target.value)}/>
           <TextField id="outlined-basic" required label="Chain Id" variant="outlined" onChange={(e) => setChainId(e.target.value)}/>
           <TextField id="outlined-basic" required label="Sender Address" variant="outlined" onChange={(e) => setSenderAddress(e.target.value)}/>

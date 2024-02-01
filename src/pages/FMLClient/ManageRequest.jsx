@@ -1,76 +1,70 @@
 import React, { useEffect, useState } from "react";
-import { Button, Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { Button, TextField, Typography } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
 
 const portForBackend = 5000
 const ManageRequest = ({ needPopup }) => {
   const { id } = useParams();
-  console.log(id);
-  const [status, setStatus] = useState(null);
 
-  const [isPoppedUp, setIsPoppedUp] = useState(true);
+  const navigate = useNavigate();
+  const [serverAddress, setServerAddress] = useState();
 
+  // polling request to the backend
   useEffect(() => {
-    const getStatus = async () => {
-      const response = await fetch(`http://127.0.0.1:${portForBackend}`);
-      const data = await response.json();
+    // const getStatus = async () => {
+    //   const response = await fetch(`http://127.0.0.1:${portForBackend}`);
+    //   const data = await response.json();
 
-      for (const r in data.requests) {
-        const requestItem = data.requests[r];
-        if (requestItem.id == id) {
-          console.log("found request item");
-          console.log(requestItem);
-          setStatus(requestItem);
-          break;
-        }
-      }
-      for (const s in data.joiningInfo) {
-        const joinItem = data.joiningInfo[s];
-        if (joinItem.id == id) {
-          console.log("found join item");
-          console.log(joinItem);
-          setStatus(prev => {prev.joinDetails = joinItem; return prev});
-          break;
-        }
-      }
-    }
-    getStatus();
+    //   for (const r in data.requests) {
+    //     const requestItem = data.requests[r];
+    //     if (requestItem.id == id) {
+    //       console.log("found request item");
+    //       console.log(requestItem);
+    //       setStatus(requestItem);
+    //       break;
+    //     }
+    //   }
+    //   for (const s in data.joiningInfo) {
+    //     const joinItem = data.joiningInfo[s];
+    //     if (joinItem.id == id) {
+    //       console.log("found join item");
+    //       console.log(joinItem);
+    //       setStatus(prev => {prev.joinDetails = joinItem; return prev});
+    //       break;
+    //     }
+    //   }
+    // }
+    // getStatus();
   }, [])
 
-  const handleConnect = () => {
-    setIsPoppedUp(true);
-    return;
-  }
+  const startServer = () => {
+    fetch(`http://127.0.0.1:${portForBackend}/start_server`, {
+      method: "POST",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify({
+        _server_address: serverAddress
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+    })
+    .catch(err => console.error(err))
 
-  const handlePopupClose = () => {
-    setIsPoppedUp(false);
+    navigate(`/progress/${id}`);
   }
 
   return (
     <>
-      {status &&
-        <>
-          <div style={{ marginLeft: "1rem", marginTop: "1rem" }}>
-            <Typography variant="h6">{status.title}</Typography>
-            <Typography variant="body1">Current Round: {status.rounds}</Typography>
-            <Typography variant="body1">Participants: {status.participants}</Typography>
-            <Button variant="outlined" onClick={handleConnect}>Start Server</Button>
-          </div>
-          <Dialog
-            open={isPoppedUp}
-            onClose={handlePopupClose}
-          >
-            <DialogContent>
-              <DialogTitle>Server Info</DialogTitle>
-              <Typography variant="body1">{status.joinDetails.server.description}</Typography>
-
-              <Typography variant="h6">Blockchain Info</Typography>
-              <Typography variant="body1">{status.joinDetails.blockchain.description}</Typography>
-              <Button variant="outlined">Download Client</Button>
-            </DialogContent>
-          </Dialog>
-        </>
-      }
+      <Typography style={{ marginLeft: "1rem", marginTop: "1rem" }} variant="h4">Participants</Typography>
+      <div style={{ marginLeft: "1rem", marginTop: "1rem" }}>
+        <ol>
+          {/* for each event write it here */}
+        </ol>
+      </div>
+      <TextField label="Server Address" required onChange={(e) => {setServerAddress(e.target.value)}}/>
+      <Button onClick={startServer}>Start Server</Button>
     </>
   )
 }
