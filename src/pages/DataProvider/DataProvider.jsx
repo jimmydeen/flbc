@@ -1,8 +1,8 @@
 import { React } from "react";
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const Client = () => {
+const DataProvider = () => {
     
     /*
         fetch available models from some backend
@@ -71,4 +71,4 @@ const Client = () => {
         </div>
     )
 }
-export default Client;
+export default DataProvider;

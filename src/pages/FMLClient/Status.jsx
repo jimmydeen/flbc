@@ -54,7 +54,7 @@ const Status = ({ needPopup }) => {
             <Typography variant="h6">{status.title}</Typography>
             <Typography variant="body1">Current Round: {status.rounds}</Typography>
             <Typography variant="body1">Participants: {status.participants}</Typography>
-            <Button variant="outlined" onClick={handleConnect}>Connect</Button>
+            <Button variant="outlined" onClick={handleConnect}>Start Server</Button>
           </div>
           <Dialog
             open={isPoppedUp}

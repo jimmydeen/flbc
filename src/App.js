@@ -1,13 +1,15 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Client from './pages/Client';
-import FMLClient from './pages/FMLClient';
+import DataProvider from './pages/DataProvider/DataProvider';
+import FMLClient from './pages/FMLClient/FMLClient';
 import Form from './pages/Form';
-import JobAgreement from './pages/JobAgreement';
-import Deploy from './pages/Deploy';
+import GetClientProgram from './pages/GetClientProgram';
+import JobAgreement from './pages/DataProvider/JobAgreement';
+import Deploy from './pages/FMLClient/Deploy';
 import NavBar from './components/NavBar';
-import Status from './pages/Status';
+import Status from './pages/FMLClient/Status';
+import Waiting from './pages/DataProvider/Waiting';
 
 function App() {
 
@@ -35,9 +37,15 @@ function App() {
             <Route path="/createRequest" element={<FMLClient/>}></Route>
             <Route path="/deploy" element={<Deploy/>}></Route>
 
+            {/* Data Provider */}
+            <Route path="/viewRequests" element={<DataProvider/>}></Route>
             <Route path="/agreement" element={<JobAgreement/>}></Route>
+            <Route path="/waiting" element={<Waiting/>}></Route>
+            <Route path="/getClientProgram" element={<GetClientProgram/>}/>
             <Route path="/form" element={<Form/>}></Route>
-            <Route path="/viewRequests" element={<Client/>}></Route>
+
+            
+            {/* Unified */}
             <Route path="/job/:id" element={<Status/>}></Route>
           </Routes>
         </div>
