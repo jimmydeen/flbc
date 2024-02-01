@@ -25,12 +25,12 @@ const NavBar = ()=> {
 						<div
 							sx={{ my: 2, display: 'block', color: 'black' }}
 						>
-							<NavLink to="/user" style={{textDecoration: 'none', fontSize: '1.5em'}}>User</NavLink>
+							<NavLink to="/createRequest" style={({ isActive, isPending, isTransitioning }) => { return {textDecoration: 'none', fontSize: '1.5em', color: isActive ? "black" : "blue"}}}>Make a Request</NavLink>
 						</div>
 						<div
 							sx={{ my: 2, display: 'block', color: 'black' }}
 						>
-							<NavLink to="/client" style={{textDecoration: 'none', fontSize: '1.5em'}}>Client</NavLink>
+							<NavLink to="/client" style={({ isActive, isPending, isTransitioning }) => { return {textDecoration: 'none', fontSize: '1.5em', color: isActive ? "black" : "blue"}}}>View the Requests</NavLink>
 						</div>
 				</Box>
 			</Toolbar>
