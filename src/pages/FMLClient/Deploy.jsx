@@ -57,7 +57,7 @@ const Deploy = () => {
 
     })
     .catch(err => alert(err.message))
-    navigate("/job/1294801");
+    navigate("/waitingDeployment/1294801");
   }
 
   useEffect(() => {

@@ -11,6 +11,7 @@ import NavBar from './components/NavBar';
 import ManageRequest from './pages/FMLClient/ManageRequest';
 import Waiting from './pages/DataProvider/Waiting';
 import Progress from './pages/Progress';
+import WaitingDeployment from './pages/FMLClient/WaitingDeployment';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
             {/* FMLClient Flow */}
             <Route path="/createRequest" element={<FMLClient/>}></Route>
             <Route path="/deploy" element={<Deploy/>}></Route>
+            <Route path="/waitingDeployment/1294801" element={<WaitingDeployment/>}></Route>
             <Route path="/startServer" element={<ManageRequest/>}/>
 
             {/* Data Provider */}
