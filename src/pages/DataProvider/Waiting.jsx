@@ -1,13 +1,26 @@
 import React, { useEffect } from "react";
 import { Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Waiting = () => {
 
-  // useEffect(() => {
-  //   while (true) {
-  //     // fetch from the endpoint which gives indication that the server has been started
-  //   }
-  // }, [])
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    function checkServer() {
+     fetch('http://localhost:5000/check_server')
+         .then(response => {
+             if (response.status === 200) {
+                 // Server has started, change the page
+                 navigate('/getClientProgram');
+             } else {
+                 // Server has not started, check again in 5 seconds
+                 setTimeout(checkServer, 5000);
+             }
+         });
+    }
+    checkServer();
+  }, [navigate])
 
   return (
     <div style={{
