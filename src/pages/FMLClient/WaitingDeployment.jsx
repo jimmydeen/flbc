@@ -6,6 +6,19 @@ const WaitingDeployment = () => {
   //   while (true) {
   //     // fetch from the endpoint which gives indication that the server has been started
   //   }
+  // 
+    // function checkServer() {
+    //   fetch('http://localhost:5000/check_server')
+    //       .then(response => {
+    //           if (response.status === 200) {
+    //               // Server has started, change the page
+    //               window.location.href = '/new_page';
+    //           } else {
+    //               // Server has not started, check again in 5 seconds
+    //               setTimeout(checkServer, 5000);
+    //           }
+    //       });
+    // }
   // }, [])
 
   return (
