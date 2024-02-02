@@ -52,9 +52,6 @@ const Deploy = () => {
     })
     .then(res => res.json())
     .then(data => {
-      const contractAddress = data.contract_address;
-      const contractAbi = data.contract_abi;
-
     })
     .catch(err => alert(err.message))
     navigate("/job/1294801");
