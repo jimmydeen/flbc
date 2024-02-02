@@ -30,7 +30,7 @@ const Progress = () => {
     <>
       {events &&
         events.map((item, index) => {
-          <div key={index}>
+          <div style={{ border: "solid 1px black" }} key={index}>
             <Typography>{item.timestamp}</Typography>
             <Typography>{item.type}</Typography>
             <Typography>{item.message}</Typography>
