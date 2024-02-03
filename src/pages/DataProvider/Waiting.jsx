@@ -7,19 +7,35 @@ const Waiting = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    function checkServer() {
-     fetch('http://localhost:5000/check_server')
-         .then(response => {
-             if (response.status === 200) {
-                 // Server has started, change the page
-                 navigate('/getClientProgram');
-             } else {
-                 // Server has not started, check again in 5 seconds
-                 setTimeout(checkServer, 5000);
-             }
-         });
+    const checkServerReady = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/check_server');
+        if (response.status === 200) {
+          navigate('getClientProgram');
+        } 
+      } catch (err) {
+        console.error(err);
+      }
     }
-    checkServer();
+    // function checkServer() {
+    //  fetch('http://localhost:5000/check_server')
+    //      .then(response => {
+    //          if (response.status === 200) {
+    //              // Server has started, change the page
+    //              navigate('/getClientProgram');
+    //          } else {
+    //              // Server has not started, check again in 5 seconds
+    //              setTimeout(checkServer, 5000);
+    //          }
+    //      });
+    // }
+    // checkServer();
+    checkServerReady();
+    const polling = setInterval(() => {
+      checkServerReady();
+    }, 5000);
+
+    return () => clearInterval(polling);
   }, [navigate])
 
   return (
