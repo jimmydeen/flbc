@@ -6,10 +6,10 @@ const Progress = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch('http://localhost:5000/get_events');
+      const response = await fetch('http://localhost:8000/get_events');
       const result = await response.json();
       console.log(result);
-      setEvents(result.events);
+      setEvents(result);
     } catch (err) {
       console.error(err);
     }

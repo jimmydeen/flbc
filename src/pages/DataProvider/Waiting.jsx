@@ -9,9 +9,9 @@ const Waiting = () => {
   useEffect(() => {
     const checkServerReady = async () => {
       try {
-        const response = await fetch('http://localhost:5000/check_server');
+        const response = await fetch('http://localhost:8000/check_server');
         if (response.status === 200) {
-          navigate('getClientProgram');
+          navigate('/getClientProgram');
         } 
       } catch (err) {
         console.error(err);

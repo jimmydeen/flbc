@@ -34,7 +34,7 @@ const Deploy = () => {
   const agree = () => {
     setTosPoppedUp(false);
     // get contract address and contract abi as a result
-    fetch("http://127.0.0.1:5000/deploy_contract", {
+    fetch("http://127.0.0.1:8000/deploy_contract", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -50,9 +50,9 @@ const Deploy = () => {
           stake
         })
     })
-    .then(res => res.json())
-    .then(data => {
-    })
+    // .then(res => res.json())
+    // .then(data => {
+    // })
     .catch(err => alert(err.message))
     navigate("/job/1294801");
   }
