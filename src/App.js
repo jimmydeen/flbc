@@ -12,6 +12,7 @@ import ManageRequest from './pages/FMLClient/ManageRequest';
 import Waiting from './pages/DataProvider/Waiting';
 import Progress from './pages/Progress';
 import WaitingDeployment from './pages/FMLClient/WaitingDeployment';
+import Summary from './pages/Summary';
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
             {/* Unified */}
             <Route path="/job/:id" element={<ManageRequest/>}></Route>
             <Route path="/progress/:id" element={<Progress/>}></Route>
+            <Route path="/summary/:id" element={<Summary/>}></Route>
           </Routes>
         </div>
       </ThemeProvider>
