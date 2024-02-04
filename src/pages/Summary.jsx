@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { Typography  } from "@mui/material";
 
 const Summary = () => {
   const [totalIncentive, setTotalIncentive] = useState();
   const [updatesTrained, setUpdatesTrained] = useState();
   const [clientLog, setClientLog] = useState();
 
-  useEffect(async () => {
+  useEffect(() => {
     const getSummary = async () => {
       try {
         const response = await fetch("http://127.0.0.1:8000/getClientSummary")
@@ -24,13 +25,13 @@ const Summary = () => {
 
   return (
     <>
-      <div style={{ marginLeft: "1rem" }}>
+      <div style={{ margin: "1rem" }}>
         <Typography variant="h4">Summary</Typography>
         <Typography variant="body1">Total Incentive: {totalIncentive}</Typography>
         <Typography variant="body1">Updates Trained: {updatesTrained}</Typography>
       </div>
       <Typography sx={{ ml: "1rem" }} variant="body1">Reward Log:</Typography>
-      {
+      {clientLog &&
         clientLog.map((item, index) => {
           if (item.reward) {
             return (
@@ -43,8 +44,8 @@ const Summary = () => {
           }
         })
       }
-      <Typography variant="body1">Update Log:</Typography>
-      {
+      <Typography sx={{ml: "1rem"}} variant="body1">Update Log:</Typography>
+      {clientLog &&
         clientLog.map((item, index) => {
           if (!item.reward) {
             return (
