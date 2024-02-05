@@ -76,7 +76,7 @@ const Summary = () => {
       {plot &&
         <>
           <Typography sx={{ml: "1rem"}} variant="body1">Plot of Models Convergence:</Typography>
-          <img style={{ width: "200px" }} src={plot} alt="Plot showing the accuracy of the model over time"></img>
+          <img style={{ width: "70vw" }} src={plot} alt="Plot showing the accuracy of the model over time"></img>
         </>
       }
       {}
