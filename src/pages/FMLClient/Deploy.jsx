@@ -8,9 +8,10 @@ const Deploy = () => {
   const [senderAddress, setSenderAddress] = useState();
   const [incentive, setIncentive] = useState();
   const [numberUpdatesRequested, setNumberUpdatesRequested] = useState();
+  const [maxDataPoints, setMaxDataPoints] = useState();
   const [stake, setStake] = useState();
   const [privateKey, setPrivateKey] = useState();
-  const [maxDataPoints, setMaxDataPoints] = useState();
+  const [incentivePerDataPoint, setIncentivePerDataPoint] = useState();
 
   const [validInput, setValidInput] = useState(true);
 
@@ -47,7 +48,8 @@ const Deploy = () => {
           incentive,
           numberUpdatesRequested,
           maxDataPoints,
-          stake
+          stake,
+          incentivePerDataPoint
         })
     })
     // .then(res => res.json())
@@ -84,6 +86,7 @@ const Deploy = () => {
           <TextField id="outlined-basic" required label="Number Updates Requested" variant="outlined" onChange={(e) => setNumberUpdatesRequested(e.target.value)}/>
           <TextField id="outlined-basic" required label="Stake" variant="outlined" onChange={(e) => setStake(e.target.value)}/>
           <TextField id="outlined-basic" required label="Max Data Points" variant="outlined" onChange={(e) => setMaxDataPoints(e.target.value)}/>
+          <TextField id="outlined-basic" required label="Incentive per Data Point" variant="outlined" onChange={(e) => setIncentivePerDataPoint(e.target.value)}/>
           
           {/* use for error alerts */}
           {!validInput && 
