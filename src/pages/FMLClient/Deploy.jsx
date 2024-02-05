@@ -80,8 +80,8 @@ const Deploy = () => {
       <FormControl>
           <TextField id="outlined-basic" required label="W3 Provider" variant="outlined" onChange={(e) => setW3Provider(e.target.value)}/>
           <TextField id="outlined-basic" required label="Chain Id" variant="outlined" onChange={(e) => setChainId(e.target.value)}/>
-          <TextField id="outlined-basic" required label="Private Key" variant="outlined" onChange={(e) => setPrivateKey(e.target.value)}/>
           <TextField id="outlined-basic" required label="Sender Address" variant="outlined" onChange={(e) => setSenderAddress(e.target.value)}/>
+          <TextField id="outlined-basic" required label="Private Key" variant="outlined" onChange={(e) => setPrivateKey(e.target.value)}/>
           <TextField id="outlined-basic" required label="Incentive" variant="outlined" onChange={(e) => setIncentive(e.target.value)}/>
           <TextField id="outlined-basic" required label="Number Updates Requested" variant="outlined" onChange={(e) => setNumberUpdatesRequested(e.target.value)}/>
           <TextField id="outlined-basic" required label="Stake" variant="outlined" onChange={(e) => setStake(e.target.value)}/>

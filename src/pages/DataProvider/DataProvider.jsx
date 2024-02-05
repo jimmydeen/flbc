@@ -11,6 +11,17 @@ const DataProvider = () => {
     const data = {
         requests: [
             {
+                id: 0,
+                title: "MNIST handwritten digits",
+                description: "28x28 images of handwritten digits",
+                format: "array of images, where images are stored as 2D arrays of integers, each integer representing a pixel at that location",
+                incentiveAmount: 10000,
+                rounds: 100,
+                modelType: "neural network"
+
+            },
+            {
+                
                 id: 1294801,
                 title: "cancer detection data",
                 description: "patient data with labels being categories of risk for cancer",
