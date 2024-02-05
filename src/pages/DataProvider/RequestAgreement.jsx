@@ -22,7 +22,7 @@ const RequestAgreement = () => {
     // store the request they are waiting on
     localStorage.setItem('waiting', 1294801);
     // take them to the awaiting page
-    navigate('/waiting');
+    navigate('/progress/1294801');
   }
 
   const disagree = () => {
