@@ -6,6 +6,8 @@ const Summary = () => {
   const [updatesTrained, setUpdatesTrained] = useState();
   const [clientLog, setClientLog] = useState();
 
+  const [plot, setPlot] = useState();
+
   useEffect(() => {
     const getSummary = async () => {
       try {
@@ -14,6 +16,18 @@ const Summary = () => {
         setTotalIncentive(data.total_incentive);
         setUpdatesTrained(data.updates_trained);
         setClientLog(data.client_log);
+      }
+      catch (err) {
+        console.error(err);
+      }
+    }
+
+    const getPlot = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/getPlot")
+        const data = await response.blob();
+        const imgUrl = URL.createObjectURL(data);
+        setPlot(imgUrl);
       }
       catch (err) {
         console.error(err);
@@ -58,6 +72,13 @@ const Summary = () => {
           }
         })
       }
+      {plot &&
+        <>
+          <Typography sx={{ml: "1rem"}} variant="body1">Plot of Models Convergence:</Typography>
+          <img src={plot} alt="Plot showing the accuracy of the model over time"></img>
+        </>
+      }
+      {}
     </>
   )
 }
