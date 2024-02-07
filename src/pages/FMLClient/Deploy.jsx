@@ -45,7 +45,6 @@ const Deploy = () => {
           chain_id: chainId,
           sender_address: senderAddress,
           private_key: privateKey,
-          incentive,
           numberUpdatesRequested,
           maxDataPoints,
           stake,
@@ -60,7 +59,7 @@ const Deploy = () => {
   }
 
   useEffect(() => {
-    if (!w3provider || !senderAddress || !incentive || !numberUpdatesRequested || !stake || !privateKey || !maxDataPoints) {
+    if (!w3provider || !senderAddress || !numberUpdatesRequested || !stake || !privateKey || !maxDataPoints) {
       console.log('not filled yet');
       setValidInput(false);
     } else {
@@ -82,7 +81,6 @@ const Deploy = () => {
           <TextField id="outlined-basic" required label="Chain Id" variant="outlined" onChange={(e) => setChainId(e.target.value)}/>
           <TextField id="outlined-basic" required label="Sender Address" variant="outlined" onChange={(e) => setSenderAddress(e.target.value)}/>
           <TextField id="outlined-basic" required label="Private Key" variant="outlined" onChange={(e) => setPrivateKey(e.target.value)}/>
-          <TextField id="outlined-basic" required label="Incentive" variant="outlined" onChange={(e) => setIncentive(e.target.value)}/>
           <TextField id="outlined-basic" required label="Number Updates Requested" variant="outlined" onChange={(e) => setNumberUpdatesRequested(e.target.value)}/>
           <TextField id="outlined-basic" required label="Stake" variant="outlined" onChange={(e) => setStake(e.target.value)}/>
           <TextField id="outlined-basic" required label="Max Data Points" variant="outlined" onChange={(e) => setMaxDataPoints(e.target.value)}/>

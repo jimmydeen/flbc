@@ -39,8 +39,8 @@ const RequestAgreement = () => {
         <Typography variant="body1">Rounds: {job.rounds}</Typography>
         <Typography variant="body1">Model Type: {job.model}</Typography>
 
-        <Typography variant="body1">Number of Updates: </Typography>
-        <Typography variant="body1">Max number of Data Points: </Typography>
+        <Typography variant="body1">Number of Updates: 100</Typography>
+        <Typography variant="body1">Max number of Data Points: 1000 </Typography>
 
         <Button variant="outlined" onClick={showContract}>Join</Button>
       </div>
