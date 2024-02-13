@@ -11,8 +11,7 @@ const GetClientProgram = () => {
   const handleClick = (number) => {
 
     const makeRequest = () => {
-      console.log("hello");
-      fetch(`http://127.0.0.1:8000/start_client${number}`, {
+      fetch(`http://127.0.0.1:8000/download_client`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -22,7 +21,21 @@ const GetClientProgram = () => {
             _client_pk: clientPk,
           })
       })
-      .then(res => navigate("/progress/1294801"))
+      .then(res => res.blob())
+      .then(blob => {
+        const blobUrl = window.URL.createObjectURL(blob);
+
+        const anchor = document.createElement('a');
+        anchor.href = blobUrl;
+        anchor.download = "client.py";
+        anchor.style.display = "none";
+        document.body.appendChild(anchor);
+        anchor.click();
+
+        anchor.remove();
+        window.URL.revokeObjectURL(blobUrl);
+        navigate("/progress/1294801")
+      })
       .catch(err => console.error(err))
     }
 
